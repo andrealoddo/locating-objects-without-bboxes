@@ -1,0 +1,9 @@
+python -m object-locator.locate \
+       --dataset C:/Users/loand/Pictures/ImmaginiLavoro/Crowds/Mall/frames \
+       --out out/ \
+       --model checkpoints/ \
+       --evaluate \
+       --radii 5
+
+
+python -m object-locator.locate --dataset C:/Users/loand/Pictures/ImmaginiLavoro/Crowds/Mall/frames --out out/ --model checkpoints/saved_model.ckpt --evaluate --radii 5
