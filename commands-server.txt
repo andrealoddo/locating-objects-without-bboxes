@@ -1,0 +1,55 @@
+python -m object-locator.locate \
+       --dataset DIRECTORY \
+       --out DIRECTORY \
+       --model CHECKPOINTS \
+       --evaluate \
+       --no-gpu \
+       --radius 5
+       
+python -m object-locator.locate \
+       --dataset /home/server/Datasets/Mall/frames \
+       --out out/ \
+       --model checkpoints/ \
+       --evaluate \
+       --radii 5
+       
+       
+nohup python -m object-locator.locate \
+       --dataset /home/server/Datasets/Mall/frames \
+       --out out/ \
+       --model checkpoints/saved_model.ckpt \
+       --evaluate \
+       --radii 5 \
+       > nohup-locate.out &
+    
+    
+    
+       
+python -m object-locator.train \
+       --train-dir TRAINING_DIRECTORY \
+       --batch-size 32 \
+       --visdom-env mytrainingsession \
+       --visdom-server localhost \
+       --lr 1e-3 \
+       --val-dir TRAINING_DIRECTORY \
+       --optim Adam \
+       --save saved_model.ckpt
+       
+python -m object-locator.train \
+       --train-dir /home/server/Datasets/Mall/frames \
+       --batch-size 32 \
+       --lr 1e-3 \
+       --val-dir /home/server/Datasets/Mall/frames \
+       --optim Adam \
+       --save saved_model.ckpt
+       
+       
+       
+nohup python -u -m object-locator.train \
+       --train-dir /home/server/Datasets/Mall/frames \
+       --batch-size 32 \
+       --lr 1e-3 \
+       --val-dir /home/server/Datasets/Mall/frames \
+       --optim Adam \
+       --save saved_model.ckpt \
+       > nohup.out &
