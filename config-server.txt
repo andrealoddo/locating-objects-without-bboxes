@@ -1,0 +1,4 @@
+Versione NVIDIA-SMI: 440-100
+Cuda version: 10.2
+Cudnn version: 7.6.5
+Pytorch: 1.0

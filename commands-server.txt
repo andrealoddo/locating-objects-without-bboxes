@@ -8,20 +8,13 @@ python -m object-locator.locate \
        
 python -m object-locator.locate \
        --dataset /home/server/Datasets/Mall/frames \
-       --out out/ \
-       --model checkpoints/ \
+       --out out \
+       --model checkpoints \
        --evaluate \
        --radii 5
-       
-       
-nohup python -m object-locator.locate \
-       --dataset /home/server/Datasets/Mall/frames \
-       --out out/ \
-       --model checkpoints/saved_model.ckpt \
-       --evaluate \
-       --radii 5 \
-       > nohup-locate.out &
-    
+
+nohup ./test.sh > nohup/test-info.out &
+
     
     
        
@@ -35,21 +28,12 @@ python -m object-locator.train \
        --optim Adam \
        --save saved_model.ckpt
        
-python -m object-locator.train \
-       --train-dir /home/server/Datasets/Mall/frames \
+python -u -m object-locator.train \
+       --train-dir /home/server/Datasets/Mall/training_set \
+       --val-dir /home/server/Datasets/Mall/validation_set \
        --batch-size 32 \
-       --lr 1e-3 \
-       --val-dir /home/server/Datasets/Mall/frames \
+       --lr 1e-4 \
        --optim Adam \
-       --save saved_model.ckpt
-       
-       
-       
-nohup python -u -m object-locator.train \
-       --train-dir /home/server/Datasets/Mall/frames \
-       --batch-size 32 \
-       --lr 1e-3 \
-       --val-dir /home/server/Datasets/Mall/frames \
-       --optim Adam \
-       --save saved_model.ckpt \
-       > nohup.out &
+       --save saved_model.ckpt 
+
+nohup ./train.sh > nohup/train-info.out &
